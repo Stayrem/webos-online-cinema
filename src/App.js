@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import './App.css';
 import {
   HashRouter as Router,
@@ -10,7 +10,6 @@ import SpatialNavigation from "spatial-navigation-js";
 import Home from './pages/Home';
 import Film from './pages/Film';
 import Player from "./pages/Player";
-import {keyDict, keyPressHandler} from "./constants";
 
 
 function App() {
@@ -27,13 +26,13 @@ function App() {
     <Router>
       <Switch>
         <Route path="/film/:href">
-          <Film />
+          <Film/>
         </Route>
         <Route path="/player">
-          <Player />
+          <Player/>
         </Route>
         <Route path="/">
-          <Home />
+          <Home/>
         </Route>
       </Switch>
     </Router>
