@@ -191,6 +191,7 @@ body {
 
 .film-info {
   display: flex;
+  margin-top: 10%;
 }
 
 .film-info__description {
@@ -208,6 +209,10 @@ body {
 
 .film-list__item--dl {
   font-size: 0.7em;
+}
+
+.film-info__poster {
+  align-self: flex-start;
 }
 
 .watch-btn {
