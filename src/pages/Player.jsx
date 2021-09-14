@@ -40,8 +40,12 @@ const Player = () => {
     });
 
     window.addEventListener('keydown', onKeyPress);
-    return () => window.removeEventListener('keydown', onKeyPress);
-  }, []);
+    return () => {
+      window.removeEventListener('keydown', onKeyPress);
+      HLS.destroy();
+    };
+
+  }, [videoSrc]);
 
 
   return (
