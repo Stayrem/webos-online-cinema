@@ -7,6 +7,13 @@ export const searchFilms = async (query) => {
     .catch((err) => console.log(err))
 }
 
+export const getCategoryHot = async (query) => {
+  return await fetch(`${HOST}/category/hot`)
+    .then((res) => res.json())
+    .then((res) => res.data)
+    .catch((err) => console.log(err))
+}
+
 export const fetchFilmPlaylist = async (href) => {
   return await fetch(`${HOST}/item?href=${href}`)
     .then((res) => res.json())

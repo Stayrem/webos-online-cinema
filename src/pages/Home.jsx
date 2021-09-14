@@ -4,7 +4,7 @@ import {
   useHistory,
 } from "react-router-dom";
 
-import { searchFilms } from '../api';
+import { searchFilms, getCategoryHot } from '../api';
 import { fetchStatusesDict, keyPressHandler } from '../constants';
 import preloader from '../preloader.svg';
 import error from '../error.gif';
@@ -24,12 +24,12 @@ const Home = () => {
   const searchSubmitHandler = async (evt, query) => {
     evt.preventDefault();
     changeFetchData(fetchDataInitialState);
-    await initFetchedData(`?query=${query}`)
+    await initFetchedData(searchFilms,`?query=${query}`)
   };
 
-  const initFetchedData = async (query = '?query=Witcher') => {
+  const initFetchedData = async (cb, query = '?query=Witcher') => {
     try {
-      const filmsFetchData = await searchFilms(query);
+      const filmsFetchData = await cb(query);
       changeFetchData({
         films: filmsFetchData,
         fetchStatus: fetchStatusesDict.FULFILLED,
@@ -44,7 +44,7 @@ const Home = () => {
 
 
   useEffect(async () => {
-    await initFetchedData();
+    await initFetchedData(getCategoryHot);
   }, []);
 
   return (
