@@ -1,0 +1,45 @@
+{
+  "name": "kino-pub",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "copy-webpack-plugin": "^9.0.1",
+    "openplayerjs": "^2.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "spatial-navigation-js": "^1.0.0",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "set PUBLIC_URL=./&& react-scripts build && npm run build-ipk",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-ipk": "ares-package -o webos-build build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.1.8"
+  }
+}
