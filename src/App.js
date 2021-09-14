@@ -28,7 +28,7 @@ function App() {
         <Route path="/film/:href">
           <Film/>
         </Route>
-        <Route path="/player">
+        <Route path="/player/:href">
           <Player/>
         </Route>
         <Route path="/">

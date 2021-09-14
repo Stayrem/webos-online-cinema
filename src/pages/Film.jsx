@@ -24,10 +24,7 @@ const Film = () => {
   const fetchFilmInfo = useCallback(async() => {
     const playlist = await fetchFilmPlaylist(params.href.split('.').join('/'));
     changeFilmFetchData({ ...playlist, fetchStatus: fetchStatusesDict.FULFILLED });
-    localStorage.removeItem('hls');
-    console.log(localStorage)
-    localStorage.setItem('hls', playlist.hls4);
-    console.log(localStorage)
+    localStorage.setItem(params.href, JSON.stringify({ playlist: playlist.hls4 }));
   }, [params.href]);
 
   useEffect(() => {
@@ -53,7 +50,7 @@ const Film = () => {
               </li>
             </ul>
 
-            <Link to="/player" className="watch-btn">Смотреть</Link>
+            <Link to={`/player/${params.href}`} className="watch-btn">Смотреть</Link>
           </div>
         </div>
       )}
