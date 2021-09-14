@@ -11,7 +11,7 @@ const Player = () => {
   const params = useParams();
   const stored = JSON.parse(localStorage.getItem(params.href));
   const playerRef = useRef(null);
-  const hls = new Hls();
+  const hls = new Hls({ backBufferLength: 0, maxBufferLength: 5 });
 
   useEffect(() => {
     hls.loadSource(stored.playlist);
@@ -23,7 +23,6 @@ const Player = () => {
       }));
       hls.audioTrack = audioTracks.selectedAudio;
       hls.attachMedia(playerRef.current);
-      playerRef.current.requestFullscreen();
     });
 
     return () => {
