@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {
   Link
 } from "react-router-dom";
@@ -20,10 +20,19 @@ const fetchDataInitialState = {
 const Film = () => {
   const [ filmFetchData, changeFilmFetchData ] = useState(fetchDataInitialState);
   const params = useParams();
-  useEffect(async () => {
+
+  const fetchFilmInfo = useCallback(async() => {
     const playlist = await fetchFilmPlaylist(params.href.split('.').join('/'));
     changeFilmFetchData({ ...playlist, fetchStatus: fetchStatusesDict.FULFILLED });
-  }, []);
+    localStorage.removeItem('hls');
+    console.log(localStorage)
+    localStorage.setItem('hls', playlist.hls4);
+    console.log(localStorage)
+  }, [params.href]);
+
+  useEffect(() => {
+    (async () => await fetchFilmInfo())();
+  }, [params.href, fetchFilmInfo]);
 
   return (
     <div className="container">
@@ -44,10 +53,7 @@ const Film = () => {
               </li>
             </ul>
 
-            <Link to={
-              { pathname: "/player",
-              state: { hsl: filmFetchData.hls4 },
-            }} className="watch-btn">Смотреть</Link>
+            <Link to="/player" className="watch-btn">Смотреть</Link>
           </div>
         </div>
       )}

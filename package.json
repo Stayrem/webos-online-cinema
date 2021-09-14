@@ -12,6 +12,7 @@
     "openplayerjs": "^2.8.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hls-player": "^3.0.7",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "spatial-navigation-js": "^1.0.0",
