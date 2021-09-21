@@ -190,8 +190,14 @@ body {
 }
 
 .film-info {
+  position: relative;
   display: flex;
   margin-top: 10%;
+}
+
+.back-btn {
+  position: absolute;
+  top: -55px;
 }
 
 .film-info__description {
@@ -213,6 +219,28 @@ body {
 
 .film-info__poster {
   align-self: flex-start;
+}
+
+.seasons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.season__item {
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.season__item:visited {
+  color: unset;
+}
+
+.season__item.season__item--active {
+  color: #f60;
+}
+
+.season__item:focus {
+  color: #f60;
 }
 
 .watch-btn {
